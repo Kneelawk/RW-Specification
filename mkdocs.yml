@@ -5,6 +5,15 @@ site_url: https://specification.renderwagon.dev
 
 theme:
   name: material
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.top
+    - navigation.indexes
+    - navigation.sections
+    - navigation.expand
+    - navigation.tracking
+    - navigation.tabs.sticky
 
 extra:
   version:
