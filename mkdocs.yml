@@ -1,0 +1,21 @@
+site_name: Render Wagon - Specification
+site_description: This website contains the specification documentation related to Render Wagon
+site_author: Render Wagon Team
+site_url: https://specification.renderwagon.dev
+
+theme:
+  name: material
+
+extra:
+  version:
+    provider: mike
+    custom_dir: overrides
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: true
