@@ -1,17 +1,7 @@
-# Welcome to MkDocs
+Title: Home
+Hide: footer
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+# Welcome to the Specification for _Render Wagon_
+This website describes the specification for the Render Wagon compatible Rendering Engines and Content Creators.
+It is split if different subsection which define the individual subsystems of _Render Wagon_.
+Not every subsystem is required to be implemented by a Rendering Engine or needs to be used Content Creator.

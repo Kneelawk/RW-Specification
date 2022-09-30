@@ -4,19 +4,14 @@ on:
     branches: [ "main" ]
 
 jobs:
-  publish:
-    # The type of runner that the job will run on
+  Publish:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
-            
-      # Runs a single command using the runners shell
+          fetch-depth: 0 # Required to get all commits and determine version.
+
       - name: Determine version
         id: version
         uses: paulhatch/semantic-version@v4.0.2
@@ -24,9 +19,24 @@ jobs:
           tag_prefix: "v"
           format: "${major}.${minor}.${increment}"
           bump_each_commit: true
-        
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+        name: Setup environment
+
+      - run: pip install \
+          mkdocs-material \
+          mkdocs-minify-plugin \
+          mkdocs-redirects \
+          mike
+        name: Install dependencies
+
+      - name: Configure Git user
         run: |
-          echo Add other actions to ${{ steps.version.outputs.version }},
-          echo test, and deploy your project from a build.
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - run: mike deploy --push --update-aliases ${{ steps.version.outputs.version }} latest
+        name: Deploy to GitHub Pages
+
