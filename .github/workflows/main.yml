@@ -20,7 +20,7 @@ jobs:
         uses: paulhatch/semantic-version@v4.0.2
         with:
           tag_prefix: "v"
-          format: "${major}.${minor}.${increment}"
+          format: "${major}.${minor}.${patch}"
           bump_each_commit: true
 
       - uses: actions/setup-python@v2
